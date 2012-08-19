@@ -27,8 +27,8 @@ rosbuild_add_boost_directories()
 #rosbuild_add_executable(serial_string2 src/Serial_Port/serial_string/serialInterface.cpp)
 #rosbuild_link_boost(serial_string2 system)
 
-rosbuild_add_executable(uTOSNet src/Serial_Port/uTOSNet/uTOSNet.cpp)
-rosbuild_add_executable(uTOSNet src/Serial_Port/uTOSNet/serialInterface.cpp)
+rosbuild_add_executable(uTOSNet src/uTOSNet/uTOSNet.cpp)
+rosbuild_add_executable(uTOSNet src/uTOSNet/serialInterface.cpp)
 rosbuild_link_boost(uTOSNet system)
 
 #rosbuild_add_executable(serial_binary src/Serial_Port/serial_binary/serial_binary.cpp)
