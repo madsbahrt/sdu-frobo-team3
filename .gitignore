@@ -3,3 +3,7 @@ uTOSNet/build/
 uTOSNet/msg_gen/
 uTOSNet/src/uTOSNet/msg/
 uTOSNet/src/uTOSNet/__init__.py
+uTOSNet/.cproject
+uTOSNet/.project
+uTOSNet/.pydevproject
+uTOSNet/cmake_install.cmake
