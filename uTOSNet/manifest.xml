@@ -10,7 +10,7 @@
   <url>http://ros.org/wiki/fmInterfaces</url>
   <depend package="roscpp"/>
   <depend package="fmMsgs"/>
-
+  <depend package="std_msgs"/>
 </package>
 
 

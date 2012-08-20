@@ -106,6 +106,7 @@ bool serialInterface::openDevice(std::string device, int baudrate)
 
 void serialInterface::writeHandler(const fmMsgs::serial::ConstPtr& msg)
 {
+	ROS_DEBUG("Writing to Serial: <%s>", msg->data.c_str());
 	if (serial_.is_open())
 	{
 		serial_.write_some(
