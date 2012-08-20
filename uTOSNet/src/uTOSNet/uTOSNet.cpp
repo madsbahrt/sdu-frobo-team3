@@ -1,5 +1,5 @@
 /*************************************************************************************
-# Copyright (c) 2011, Søren Hundevadt Nielsen
+# Copyright (c) 2011, Søren Hundevadt Nielsen, Mads Bahrt
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -27,16 +27,16 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **************************************************************************************
-# File:     serial_node.cpp                                            
-# Purpose:  Create a interface node to handle serial communication
-# Project:  vic_interfaces
-# Author:   Søren Hundevadt Nielsen <soeni05@gmail.com>
+# File:     uTOSNet.cpp                                            
+# Purpose:  Reading and writing uTOSNet for the fieldrobot summer course 2012
+# Author:   Søren Hundevadt Nielsen <soeni05@gmail.com>, Mads Bahrt <mads.bahrt@gmail.com>
 # Created:  Apr 29, 2011 Søren Hundevadt Nielsen, Source written
 *************************************************************************************/
 #include <string>
 
 #include "ros/ros.h"
 #include "fmMsgs/serial.h"
+#include "uTOSNet/MotorCtrl.h"
 
 #include "serialInterface.h"
 
@@ -45,11 +45,13 @@ int main(int argc, char **argv)
   /* ros messages */
 	fmMsgs::serial s_rx_msg_;
 	fmMsgs::serial s_tx_msg_;
+	uTOSNet::MotorCtrl  motor_msg_;
 
   /* parameters */
   std::string device;
   std::string publisher_topic;
   std::string subscriber_topic;
+  std::string motor_topic;
   int baudrate;
   int term;
 
@@ -57,6 +59,7 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "vic_serial_interface");
   ros::Publisher s_publisher;
   ros::Subscriber s_subscriber;
+  ros::Subscriber motor_subscriber;
 
   /* private nodehandlers */
   ros::NodeHandle nh;
@@ -66,6 +69,7 @@ int main(int argc, char **argv)
   n.param<std::string> ("device", device, "/dev/ttyUSB0");
   n.param<std::string> ("publisher_topic", publisher_topic, "S0_rx_msg");
   n.param<std::string> ("subscriber_topic", subscriber_topic, "S0_tx_msg");
+  n.param<std::string> ("motor_subscriber_topic", motor_topic, "MotorCtrl");
   n.param<int> ("termination_character", term,10);
   n.param<int> ("baudrate", baudrate, 3000000);
 
@@ -77,6 +81,7 @@ int main(int argc, char **argv)
 
 
   s_subscriber = nh.subscribe<fmMsgs::serial> (subscriber_topic.c_str(), 20, &serialInterface::writeHandler, &serialInterface);
+  //motor_subscriber = nh.subscribe<uTOSNet::MotorCtrl>  (motor_topic.c_str(), 20, 
 
   ros::spin();
 

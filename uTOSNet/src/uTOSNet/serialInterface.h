@@ -47,6 +47,7 @@
 
 #include "ros/ros.h"
 #include "fmMsgs/serial.h"
+#include "uTOSNet/MotorCtrl.h"
 
 class serialInterface
 {
