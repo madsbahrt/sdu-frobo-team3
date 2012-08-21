@@ -11,3 +11,7 @@ uTOSNet/src/uTOSNet/__init__.py
 uTOSNet/src/uTOSNet/__init__.pyc
 unitylink/build/
 unitylink/bin/
+unitylink/.cproject
+unitylink/.project
+unitylink/.pydevproject
+unitylink/cmake_install.cmake
