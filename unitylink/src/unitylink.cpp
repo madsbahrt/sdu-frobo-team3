@@ -103,16 +103,26 @@ int main(int argc, char **argv){
 	data_received = true;
 	int cur_reg = 0;
 	std_msgs::String string_msg;
+	bool first_msg = true;
+	int data_not_rcvd_cntr = 0;
+
 
 	while (ros::ok())
 	{
 		if(data_received){
 			//Handling old register
 			data_received = false;
+			data_not_rcvd_cntr = 0;
 			if(ulregs[cur_reg].direction == IN){
-				string_msg.data = received_data = received_data.substr(5, 8);
-				ROS_INFO("DATA_RECEIVED R0%d: %s", cur_reg, received_data.c_str());
-				ulregs[cur_reg].publisher.publish(string_msg);
+				if(first_msg){
+					first_msg = false;
+				} else {
+					if(received_data.find("#S_R")==0){//Sync
+						string_msg.data = received_data = received_data.substr(5, 8);
+						ROS_INFO("DATA_RECEIVED R0%d: %s", cur_reg, received_data.c_str());
+						ulregs[cur_reg].publisher.publish(string_msg);
+					}
+				}
 			} else {
 				ROS_DEBUG("Received reply on W0%d", cur_reg);
 			}
@@ -125,6 +135,12 @@ int main(int argc, char **argv){
 				std::stringstream ss;
 				ss << "#W:0" << cur_reg << " " << ulregs[cur_reg].data << "\n";
 				sendMsg(ss.str());
+			}
+		} else {
+			if(++data_not_rcvd_cntr > 100){
+				data_not_rcvd_cntr = 0;
+				first_msg = true;
+				data_received = true;
 			}
 		}
 
