@@ -15,3 +15,9 @@ unitylink/.cproject
 unitylink/.project
 unitylink/.pydevproject
 unitylink/cmake_install.cmake
+MotorCtrl/build/
+MotorCtrl/bin/
+MotorCtrl/.cproject
+MotorCtrl/.project
+MotorCtrl/.pydevproject
+MotorCtrl/cmake_install.cmake
