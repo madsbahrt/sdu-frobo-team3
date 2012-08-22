@@ -21,7 +21,8 @@ rosbuild_genmsg()
 #uncomment if you have defined services
 #rosbuild_gensrv()
 
-rosbuild_add_executable(example src/MotorCtrl.cpp)
+rosbuild_add_executable(MotorCtrl src/MotorCtrl.cpp)
+#rosbuild_link_boost(MotorCtrl system)
 
 #common commands for building c++ executables and libraries
 #rosbuild_add_library(${PROJECT_NAME} src/example.cpp)

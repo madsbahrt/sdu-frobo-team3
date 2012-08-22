@@ -1,0 +1,17 @@
+<launch>
+
+  <group>
+    <node pkg="fmCSP" name="serial" type="serial_string">
+      <param name="device" value="/dev/ttyUSB0" />
+      <param name="baudrate" value="3000000" />
+    </node>
+  </group>
+
+  <group>
+    <node pkg="unitylink" name="unity" type="unitylink"/>
+  </group>
+
+  <group>
+    <node pkg="MotorCtrl" name="motor" type="MotorCtrl"/>
+  </group>
+</launch>

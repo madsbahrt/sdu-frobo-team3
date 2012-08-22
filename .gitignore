@@ -21,3 +21,5 @@ MotorCtrl/.cproject
 MotorCtrl/.project
 MotorCtrl/.pydevproject
 MotorCtrl/cmake_install.cmake
+MotorCtrl/msg_gen/
+MotorCtrl/src/MotorCtrl
