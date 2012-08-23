@@ -5,8 +5,6 @@
 #include "ulOutputTransformer/encSpdMsg.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
- //   using boost::bad_lexical_cast;
-
 
 #include <sstream>
 #define NEGATIVE 0b1000000000000000
@@ -31,7 +29,29 @@ std::string convert(int16_t input){
 
 void ulR01Callback(const std_msgs::String::ConstPtr& in_msg)
 {
-	//ROS_INFO("I heard: Left[%d] Right[%d]", in_msg->l, in_msg->r);
+	ROS_INFO("I heard: [%s]", in_msg->data.c_str());
+
+	unsigned int x;
+	std::stringstream ss;
+	ss << std::hex << "in_msg->data";
+	ss >> x;
+	ROS_INFO("Converted to: [%d]", x);
+
+
+//	using boost::lexical_cast;
+//	using boost::bad_lexical_cast;
+
+//	std::stringstream ss;
+//	ss << "0x" << in_msg->data;
+//
+//	try {
+//	    uint32_t x = lexical_cast<uint32_t>(ss.str());
+//	    ROS_INFO("Converted to: [%d]", x);
+//	} catch(bad_lexical_cast &) {
+//	    ROS_ERROR("Failed to convert string %s", ss.str().c_str());
+//	}
+
+
 	std_msgs::String out_msg;
 	//std::string out_string = convert(in_msg->l) + convert(in_msg->r);
 	//ROS_INFO("I send: [%s]", out_string.c_str());

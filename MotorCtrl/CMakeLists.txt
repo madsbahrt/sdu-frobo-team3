@@ -22,6 +22,7 @@ rosbuild_genmsg()
 #rosbuild_gensrv()
 
 rosbuild_add_executable(MotorCtrl src/MotorCtrl.cpp)
+rosbuild_add_executable(WiiMote2Skid src/WiiMote2Skid/WiiMote2Skid.cpp)
 #rosbuild_link_boost(MotorCtrl system)
 
 #common commands for building c++ executables and libraries
