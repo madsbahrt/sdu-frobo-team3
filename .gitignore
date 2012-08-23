@@ -1,14 +1,3 @@
-uTOSNet/bin/
-uTOSNet/build/
-uTOSNet/msg_gen/
-uTOSNet/src/uTOSNet/msg/
-uTOSNet/src/uTOSNet/__init__.py
-uTOSNet/.cproject
-uTOSNet/.project
-uTOSNet/.pydevproject
-uTOSNet/cmake_install.cmake
-uTOSNet/src/uTOSNet/__init__.py
-uTOSNet/src/uTOSNet/__init__.pyc
 unitylink/build/
 unitylink/bin/
 unitylink/.cproject
@@ -23,3 +12,12 @@ MotorCtrl/.pydevproject
 MotorCtrl/cmake_install.cmake
 MotorCtrl/msg_gen/
 MotorCtrl/src/MotorCtrl
+ulOutputTransformer/bin/
+ulOutputTransformer/build/
+ulOutputTransformer/cmake_install.cmake
+ulOutputTransformer/msg_gen/
+ulOutputTransformer/src/ulOutputTransformer/
+ulOutputTransformer/.cproject
+ulOutputTransformer/.project
+ulOutputTransformer/.pydevproject
+
