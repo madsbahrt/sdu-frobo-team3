@@ -15,6 +15,10 @@
     <node pkg="MotorCtrl" name="motor" type="MotorCtrl"/>
   </group>
 
+  <group>
+    <node pkg="MotorCtrl" name="Wimote2motor" type="WiiMote2Skid"/>
+  </group>
+
 	<group ns="fmHMI">
 		<node pkg="wiimote" type="wiimote_node.py" name="remote_control" respawn="true">
 		</node>
