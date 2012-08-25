@@ -1,2 +1,2 @@
-int16 l_speed
-int16 r_speed
+int16 l_pos
+int16 r_pos
