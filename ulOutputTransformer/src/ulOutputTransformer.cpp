@@ -184,7 +184,7 @@ int main(int argc, char **argv)
 	ros::NodeHandle n;
 	enc_pos_pub = n.advertise<ulOutputTransformer::encPosMsg>("enc_pos", 20);
 	enc_spd_pub = n.advertise<ulOutputTransformer::encSpdMsg>("enc_spd", 20);
-	start_press_pub = n.advertise<std_msgs::Bool>("start_btn", 20);
+	start_press_pub = n.advertise<std_msgs::Bool>("start", 20);
 	ros::Subscriber r01sub = n.subscribe("ULREG_R01", 20, ulR01Callback);
 	ros::Subscriber r02sub = n.subscribe("ULREG_R02", 20, ulR02Callback);
 	ros::Subscriber r03sub = n.subscribe("ULREG_R03", 20, ulR03Callback);
