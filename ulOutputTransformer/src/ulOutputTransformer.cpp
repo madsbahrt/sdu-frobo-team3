@@ -112,10 +112,10 @@ uint32_t hexstr2uint_32conv(std::string input){
 			break;
 		}
 
-		ROS_INFO("Hexconverted [%s] to [%i]", input.substr(i, 1).c_str(), inttempresult);
+		ROS_DEBUG("Hexconverted [%s] to [%i]", input.substr(i, 1).c_str(), inttempresult);
 		shiftedresult = inttempresult << ((7-i)*4);
 		result += shiftedresult;
-		ROS_INFO("shifted [%X] to [%X], accumulated result now [%X]", inttempresult, shiftedresult, result);
+		ROS_DEBUG("shifted [%X] to [%X], accumulated result now [%X]", inttempresult, shiftedresult, result);
 	}
 	return result;
 }
@@ -127,19 +127,19 @@ int16_t uint2int(uint16_t input){
     } else { //negative number
     	result = -(input & NUMBER_BITS);
     }
-	ROS_INFO("Signconverted [%X] to [%i]", input, result);
+	ROS_DEBUG("Signconverted [%X] to [%i]", input, result);
 	return result;
 }
 
 void ulR01Callback(const std_msgs::String::ConstPtr& in_msg)
 {
 	ulOutputTransformer::encPosMsg encPosMsg;
-	ROS_INFO("I heard: [%s]", in_msg->data.c_str());
+	ROS_DEBUG("I heard: [%s]", in_msg->data.c_str());
     uint32_t raw_bits = hexstr2uint_32conv(in_msg->data);
 
     uint16_t high_bits = raw_bits >> 16;
     uint16_t low_bits = raw_bits;
-    ROS_INFO("Highbits [%X] Lowbits [%X]", high_bits, low_bits);
+    ROS_DEBUG("Highbits [%X] Lowbits [%X]", high_bits, low_bits);
 
     encPosMsg.l_pos = uint2int(high_bits);
     encPosMsg.r_pos = uint2int(low_bits);
@@ -149,12 +149,12 @@ void ulR01Callback(const std_msgs::String::ConstPtr& in_msg)
 void ulR02Callback(const std_msgs::String::ConstPtr& in_msg)
 {
 	ulOutputTransformer::encSpdMsg encSpdMsg;
-	ROS_INFO("I heard: [%s]", in_msg->data.c_str());
+	ROS_DEBUG("I heard: [%s]", in_msg->data.c_str());
     uint32_t raw_bits = hexstr2uint_32conv(in_msg->data);
 
     uint16_t high_bits = raw_bits >> 16;
     uint16_t low_bits = raw_bits;
-    ROS_INFO("Highbits [%X] Lowbits [%X]", high_bits, low_bits);
+    ROS_DEBUG("Highbits [%X] Lowbits [%X]", high_bits, low_bits);
 
     encSpdMsg.l_speed = uint2int(high_bits);
     encSpdMsg.r_speed = uint2int(low_bits);
@@ -162,7 +162,7 @@ void ulR02Callback(const std_msgs::String::ConstPtr& in_msg)
 }
 void ulR03Callback(const std_msgs::String::ConstPtr& in_msg)
 {
-	ROS_INFO("I heard: [%s]", in_msg->data.c_str());
+	ROS_DEBUG("I heard: [%s]", in_msg->data.c_str());
     uint32_t raw_bits = hexstr2uint_32conv(in_msg->data);
     if(((raw_bits  & START_BIT)!=0) && (time (NULL) - lastpress > 20)){ //start
     	std_msgs::Bool startMsg;
@@ -172,9 +172,9 @@ void ulR03Callback(const std_msgs::String::ConstPtr& in_msg)
     	start_press_pub.publish(startMsg);
 
     } else {
-    	ROS_INFO("Startbit false");
+    	ROS_DEBUG("Startbit false");
     }
-    ROS_INFO("Timer: [%i]", time (NULL));
+    ROS_DEBUG("Timer: [%i]", time (NULL));
 }
 
 

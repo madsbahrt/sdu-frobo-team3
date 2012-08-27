@@ -15,14 +15,14 @@ void motorCtrlCallback(const geometry_msgs::TwistStamped::ConstPtr& in_msg)
 {
 	float linear = in_msg->twist.linear.x;
 	float angular = in_msg->twist.angular.z;
-	ROS_INFO("I heard: Linear[%f] Angular[%f]", linear , angular);
+	ROS_DEBUG("I heard: Linear[%f] Angular[%f]", linear , angular);
 	int left = 10000 * linear - 10000*angular;
 
 	int right = 10000 * linear + 10000*angular;
 
 	MotorCtrl::MotorCtrlMsg out_msg;
 
-	ROS_INFO("Transform: Left[%i] Right[%i]", left, right);
+	ROS_DEBUG("Transform: Left[%i] Right[%i]", left, right);
 
 	out_msg.l_speed = left;
 	out_msg.r_speed = right;

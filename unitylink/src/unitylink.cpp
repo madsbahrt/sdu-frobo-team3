@@ -73,7 +73,7 @@ int initializeULRegs(ros::NodeHandle n){
 
 void serialCallback(const fmMsgs::serial::ConstPtr& msg)
 {
-	ROS_INFO("I heard: [%s]", msg->data.c_str());
+	ROS_DEBUG("I heard: [%s]", msg->data.c_str());
 	data_received = true;
 	received_data = msg->data.c_str();
 }
@@ -86,7 +86,7 @@ int sendMsg(std::string s){
 	serial_tx_msg.data = ss.str();
 	serial_tx_msg.header.stamp = ros::Time::now();
 
-	ROS_INFO("%s", serial_tx_msg.data.c_str());
+	ROS_DEBUG("%s", serial_tx_msg.data.c_str());
 
 	tx_pub.publish(serial_tx_msg);
 	return 0;
@@ -119,7 +119,7 @@ int main(int argc, char **argv){
 				} else {
 					if(received_data.find("#S_R")==0){//Sync
 						string_msg.data = received_data = received_data.substr(5, 8);
-						ROS_INFO("DATA_RECEIVED R0%d: %s", cur_reg, received_data.c_str());
+						ROS_DEBUG("DATA_RECEIVED R0%d: %s", cur_reg, received_data.c_str());
 						ulregs[cur_reg].publisher.publish(string_msg);
 					}
 				}

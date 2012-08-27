@@ -27,10 +27,10 @@ std::string convert(int16_t input){
 
 void motorCtrlCallback(const MotorCtrl::MotorCtrlMsg::ConstPtr& in_msg)
 {
-	ROS_INFO("I heard: Left[%d] Right[%d]", in_msg->l_speed, in_msg->r_speed);
+	ROS_DEBUG("I heard: Left[%d] Right[%d]", in_msg->l_speed, in_msg->r_speed);
 	std_msgs::String out_msg;
 	std::string out_string = convert(in_msg->l_speed) + convert(in_msg->r_speed);
-	ROS_INFO("I send: [%s]", out_string.c_str());
+	ROS_DEBUG("I send: [%s]", out_string.c_str());
 	out_msg.data = out_string;
 	ul_pub.publish(out_msg);
 }
