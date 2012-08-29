@@ -24,3 +24,7 @@ ulOutputTransformer/.pydevproject
 manOverride/build/
 manOverride/bin/
 MotorCtrl/.settings/
+manOverride/.project
+manOverride/.cproject
+manOverride/.pydevproject
+manOverride/cmake_install.cmake

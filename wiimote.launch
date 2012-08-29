@@ -13,4 +13,8 @@
 			<param name="invert_y" value="true"/>
 		</node>
 	</group>
+	<group ns="override">
+		<node pkg="manOverride" type="manOverride" name="override">
+		</node>
+	</group>
 </launch>
