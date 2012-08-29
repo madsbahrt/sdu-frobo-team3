@@ -21,3 +21,6 @@ ulOutputTransformer/.cproject
 ulOutputTransformer/.project
 ulOutputTransformer/.pydevproject
 
+manOverride/build/
+manOverride/bin/
+MotorCtrl/.settings/

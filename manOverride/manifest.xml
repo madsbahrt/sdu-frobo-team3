@@ -1,0 +1,22 @@
+<package>
+  <description brief="manOverride">
+
+     manOverride
+
+  </description>
+  <author>Team 3</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/manOverride</url>
+  <depend package="roscpp"/>
+  <depend package="fmMsgs"/>
+
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="tf"/>
+  <depend package="joy"/>
+  <depend package="wiimote"/>
+
+</package>
+
+
